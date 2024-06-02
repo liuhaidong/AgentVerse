@@ -6,9 +6,13 @@ prompts:
 
     Below is the description of your role. ${role_description}
 
-    When speaking, please output a response in the following format with two fields Action and Action Input:
+    When speaking, please output a response in the following format with two fields 'Action' and 'Action Input':
     Action: (It should always be Speak)
     Action Input: (You should put what you want to speak use here)
+
+    For example:
+    Action: Speak
+    Action Input: I'm going to betray Suspect1 and testify against them.
 
     Here is the conversation history:
     ${chat_history}
@@ -52,8 +56,8 @@ agents:
       memory_type: chat_history
     prompt_template: *prompt
     llm:
-      model: "gpt-4"
-      llm_type: gpt-4
+      model: "llama3-instruct"
+      llm_type: llama3-instruct
       temperature: 1.2
       max_tokens: 200
     output_parser:
@@ -74,8 +78,8 @@ agents:
       memory_type: chat_history
     prompt_template: *prompt
     llm:
-      model: "gpt-4"
-      llm_type: gpt-4
+      model: "llama3-instruct"
+      llm_type: llama3-instruct
       temperature: 1.2
       max_tokens: 100
     output_parser:
@@ -96,8 +100,8 @@ agents:
       memory_type: chat_history
     prompt_template: *prompt
     llm:
-      model: "gpt-4"
-      llm_type: gpt-4
+      model: "llama3-instruct"
+      llm_type: llama3-instruct
       temperature: 1.2
       max_tokens: 100
     output_parser:

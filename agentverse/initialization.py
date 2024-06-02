@@ -97,7 +97,7 @@ def prepare_task_config(task, tasks_dir):
         agent_configs["memory"] = load_memory(agent_configs.get("memory", {}))
         if agent_configs.get("tool_memory", None) is not None:
             agent_configs["tool_memory"] = load_memory(agent_configs["tool_memory"])
-        llm = load_llm(agent_configs.get("llm", "text-davinci-003"))
+        llm = load_llm(agent_configs.get("llm", "llama3-instruct"))
         agent_configs["llm"] = llm
 
         memory_manipulator = load_memory_manipulator(

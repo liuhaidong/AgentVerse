@@ -36,6 +36,19 @@ LOCAL_LLMS_MAPPING = {
     },
 }
 
+ollama_registry = Registry(name="OllamaRegistry")
+OLLAMA_LLMS = [
+    "llama3-instruct",
+]
+
+OLLAMA_LLMS_MAPPING = {
+    "llama3-instruct": {
+        "model_name": "llama3:instruct", #llama3:70b-instruct  llama3:instruct
+        "base_url": "http://localhost:11434/v1",
+        "api_key": "EMPTY",
+    },
+}
 
 from .base import BaseLLM, BaseChatModel, BaseCompletionModel, LLMResult
 from .openai import OpenAIChat
+from .ollama import OllamaChat

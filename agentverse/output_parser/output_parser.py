@@ -242,15 +242,29 @@ class PrisonerDilemmaParser(OutputParser):
         text = output.content
         cleaned_output = text.strip()
         cleaned_output = re.sub(r"\n+", "\n", cleaned_output)
-        cleaned_output = cleaned_output.split("\n")
-        if not (
-            len(cleaned_output) == 2
-            and cleaned_output[0].startswith("Action:")
-            and cleaned_output[1].startswith("Action Input:")
+        n_output = cleaned_output.split("\n")
+        if (
+            len(n_output) == 2
         ):
-            raise OutputParserError(text)
-        action = cleaned_output[0][len("Action:") :].strip()
-        action_input = cleaned_output[1][len("Action Input:") :].strip()
+            action_s = n_output[0].split(":")
+            if len(action_s) == 1:
+                action = action_s[0].strip()
+            else:
+                action = action_s[1].strip()
+            action = "Speak"    
+            action_input = n_output[1].split(":")[1].strip()
+        else:
+            colon_output = cleaned_output.split(":")
+            if (
+                len(colon_output) == 2
+            ):
+                action = colon_output[0].strip()    
+                action_input = colon_output[1].strip()    
+            elif len(colon_output) == 3:
+                action = colon_output[0].strip()    
+                action_input = colon_output[1].strip() +":"+ colon_output[2].strip()
+            else:
+                raise OutputParserError(text)
 
         if action == "Speak":
             # make sure the police count the round right

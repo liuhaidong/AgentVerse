@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 
 @DescriberRegistry.register("prisoner")
 class PrisonerDescriber(BaseDescriber):
-    switch_func = {
+    switch_func:dict = {
         "Both Suspects": "Suspect2",
         "Suspect1": "Suspect2",
         "Suspect2": "Suspect1",

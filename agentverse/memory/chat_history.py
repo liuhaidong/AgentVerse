@@ -12,7 +12,7 @@ from . import memory_registry
 from .base import BaseMemory
 from agentverse.llms.utils import count_message_tokens, count_string_tokens
 from agentverse.llms import OpenAIChat
-from agentverse.llms.openai import DEFAULT_CLIENT as openai_client
+from agentverse.llms.ollama import DEFAULT_CLIENT as openai_client
 
 @memory_registry.register("chat_history")
 class ChatHistoryMemory(BaseMemory):
