@@ -454,7 +454,7 @@ class GUI:
                             start_autoplay_btn = gr.Button(
                                 "Start Autoplay", interactive=False
                             )
-                        with gr.Box(visible=False) as solutions:
+                        with gr.Group(visible=False) as solutions:
                             with gr.Column():
                                 gr.HTML("Optimization Solutions:")
                                 with gr.Row():
@@ -561,5 +561,5 @@ class GUI:
                     show_progress=False,
                 )
 
-        demo.queue(concurrency_count=5, max_size=20).launch(**self.ui_kwargs)
+        demo.queue( max_size=20).launch(**self.ui_kwargs)#concurrency_count=5,
         # demo.launch()
